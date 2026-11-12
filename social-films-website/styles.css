@@ -237,7 +237,8 @@ html { accent-color: var(--yellow); caret-color: var(--yellow); }
   padding: clamp(32px,5vw,56px) clamp(28px,5vw,64px); display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center;
 }
 .flagship .rail { font-size: 12px; font-weight: 800; color: rgba(20,20,20,.65); writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .14em; }
-.flagship h2 { font-size: clamp(30px,4vw,48px); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin: 0 0 14px; }
+.flagship h2 { font-size: clamp(30px,4vw,48px); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin: 0 0 10px; }
+.flagship-sub { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(20,20,20,.65); margin: 0 0 18px; }
 .flagship p { font-size: 17px; color: rgba(20,20,20,.8); line-height: 1.55; max-width: 68ch; margin: 0 0 24px; }
 .flagship a { display: inline-flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 4px; background: var(--bg); color: var(--ink); font-size: 15px; font-weight: 700; }
 .flagship a:hover { background: #2A2A2A; color: var(--ink); }
