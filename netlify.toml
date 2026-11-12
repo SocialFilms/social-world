@@ -1,0 +1,5 @@
+# Netlify settings for socialfilms.world
+# The website's files live in the social-films-website folder, so publish that folder.
+# This is a plain static site: no build step.
+[build]
+  publish = "social-films-website"
