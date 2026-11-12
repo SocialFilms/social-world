@@ -480,11 +480,11 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 .audience-copy > p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: var(--muted); max-width: 52ch; }
 .audience-copy .ticks { width: 100%; }
 .audience-copy h2 { max-width: 18ch; text-wrap: balance; }
-.audience-media { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--tile); }
+.audience-media { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--tile); }
 .audience-media img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 860px) {
   .audience-head { grid-template-columns: 1fr; }
-  .audience-media { aspect-ratio: 16 / 10; order: -1; }
+  .audience-media { aspect-ratio: auto; height: clamp(168px, 45vw, 240px); order: -1; }
 }
 
 /* ── Home: auto-scrolling deliverables row (home.js loops it; drag or swipe to take over) ── */
