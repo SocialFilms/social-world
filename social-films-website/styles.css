@@ -191,7 +191,10 @@ html { accent-color: var(--yellow); caret-color: var(--yellow); }
   .grid-work > .card:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
   .grid-work > .card:nth-child(3n+1):last-child { grid-column: 3 / span 2; }
 }
-.card-media { border-radius: var(--radius-sm); overflow: hidden; background: var(--tile); aspect-ratio: 16 / 9; }
+.card-media { position: relative; border-radius: var(--radius-sm); overflow: hidden; background: var(--tile); aspect-ratio: 16 / 9; }
+/* Yellow label on a film card (e.g. "Featured · Docu-Series"); hidden once the film plays */
+.card-badge { position: absolute; top: 12px; left: 12px; z-index: 4; pointer-events: none; display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 3px; background: var(--yellow); color: var(--bg); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.card-media:has(.video[data-playing]) .card-badge { display: none; }
 .card-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 2px 0; }
 .card-name { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
 .card--sm .card-name { font-size: 18px; }
