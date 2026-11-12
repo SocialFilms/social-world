@@ -485,7 +485,7 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 /* ── Home: auto-scrolling deliverables row (home.js loops it; drag or swipe to take over) ── */
 .rail--auto { scroll-snap-type: none; cursor: grab; }
 .rail--auto.is-dragging { cursor: grabbing; user-select: none; }
-.rail--auto .tile { scroll-snap-align: none; }
+.rail--auto > * { scroll-snap-align: none; }
 @media (max-width: 760px) {
   .step { min-height: 0; grid-template-columns: auto minmax(0,1fr); align-items: start; gap: 16px; }
   .step-num { order: -1; font-size: 40px; min-width: 28px; }
