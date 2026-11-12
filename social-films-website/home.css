@@ -471,6 +471,9 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 
 /* ── Home: upcoming missions ─────────────────────────── */
 .missions { padding-top: var(--section-y); display: grid; gap: 8px; }
+/* the Nepal picture sizes itself to its text, so the heading sits close to it */
+.missions .featured { min-height: 0; }
+.missions .featured-copy { padding-top: clamp(20px, 3vw, 40px); }
 
 /* ── Home: sponsors / non-profits (copy + photo, then four steps) ── */
 .audience { gap: 40px; scroll-margin-top: 24px; }
