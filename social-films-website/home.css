@@ -457,3 +457,44 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
   .panel { min-height: 0; padding-top: 180px; }
   .btn { height: 48px; padding: 0 20px; font-size: 16px; }
 }
+
+/* ── Home: "The Social Film" statement ───────────────── */
+.statement { padding: var(--section-y) var(--gutter) 0; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.statement p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: var(--muted); max-width: 46ch; text-wrap: pretty; }
+
+/* ── Home: upcoming missions ─────────────────────────── */
+.missions { padding-top: var(--section-y); display: grid; gap: 8px; }
+
+/* ── Home: sponsors / non-profits (copy + photo, then four steps) ── */
+.audience { gap: 40px; scroll-margin-top: 24px; }
+.audience + .audience { padding-top: 0; }
+.audience-head { display: grid; grid-template-columns: minmax(0,7fr) minmax(0,5fr); gap: clamp(28px,4vw,64px); align-items: center; scroll-margin-top: 24px; }
+.audience-copy { display: grid; gap: 18px; justify-items: start; }
+.audience-copy > p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: var(--muted); max-width: 52ch; }
+.audience-copy .ticks { width: 100%; }
+.audience-copy h2 { max-width: 18ch; text-wrap: balance; }
+.audience-media { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--tile); }
+.audience-media img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 860px) {
+  .audience-head { grid-template-columns: 1fr; }
+  .audience-media { aspect-ratio: 16 / 10; order: -1; }
+}
+
+/* ── Home: auto-scrolling deliverables row (home.js loops it; drag or swipe to take over) ── */
+.rail--auto { scroll-snap-type: none; cursor: grab; }
+.rail--auto.is-dragging { cursor: grabbing; user-select: none; }
+.rail--auto .tile { scroll-snap-align: none; }
+@media (max-width: 760px) {
+  .step { min-height: 0; grid-template-columns: auto minmax(0,1fr); align-items: start; gap: 16px; }
+  .step-num { order: -1; font-size: 40px; min-width: 28px; }
+}
+
+/* ── Home: one "What you get" dropdown in the sponsor / non-profit sections ── */
+.perks { width: 100%; background: var(--tile); border-radius: 8px; }
+.perks summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; font-size: 16px; font-weight: 700; color: var(--ink); border-radius: 8px; }
+.perks summary::-webkit-details-marker { display: none; }
+.perks summary:hover { background: #3A3A3A; }
+.perks summary .pm { font-size: 26px; font-weight: 300; line-height: 1; color: var(--muted); transition: transform .2s ease; }
+.perks[open] summary .pm { transform: rotate(45deg); }
+.perks .ticks { width: auto; box-sizing: border-box; padding: 0 20px 8px; }
+.perks .ticks li:last-child { padding-bottom: 14px; }

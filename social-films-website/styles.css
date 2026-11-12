@@ -308,6 +308,11 @@ html { accent-color: var(--yellow); caret-color: var(--yellow); }
   .brand { font-size: 19px; }
   .nav-links { order: 3; flex: 0 0 100%; margin: 0; overflow-x: auto; scrollbar-width: none; gap: 18px; font-size: 13px; }
   .nav-links::-webkit-scrollbar { display: none; }
+  /* match the home page nav on phones */
+  .nav { padding-bottom: 4px; }
+  .cta-pill { height: 40px; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 40px; }
+  .nav a[aria-current="page"] { padding-bottom: 0; }
   .btn { height: 48px; padding: 0 20px; font-size: 16px; }
 }
 @media (max-width: 560px) {
