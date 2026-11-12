@@ -104,6 +104,9 @@ summary::-webkit-details-marker { display: none; }
 
 .billboard-copy { position: relative; align-self: end; padding: 0 var(--gutter) clamp(64px,10vh,120px); display: grid; gap: 18px; justify-items: start; max-width: 680px; }
 .billboard-copy .actions { margin-top: 6px; }
+/* Home hero: big yellow wordmark (same lettering as the nav logo), then a white line */
+.hero-wordmark { margin: 0; font-weight: 800; font-size: clamp(52px, min(9vw, 13vh), 128px); line-height: .9; letter-spacing: -.035em; color: var(--yellow); white-space: nowrap; }
+.hero-sub { margin: -4px 0 0; font-weight: 800; font-size: clamp(24px, min(3.2vw, 5vh), 44px); line-height: 1.05; letter-spacing: -.03em; color: var(--ink); }
 
 /* Rows */
 .row { display: grid; gap: 14px; }
@@ -461,7 +464,7 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 }
 
 /* ── Home: "The Social Film" statement ───────────────── */
-.statement { padding: var(--section-y) var(--gutter) 0; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.statement { padding: var(--section-y) var(--gutter) clamp(36px,4vw,56px); display: grid; gap: 14px; justify-items: center; text-align: center; }
 .statement p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: var(--muted); max-width: 46ch; text-wrap: pretty; }
 
 /* ── Home: upcoming missions ─────────────────────────── */
