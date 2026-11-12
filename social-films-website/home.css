@@ -196,6 +196,8 @@ summary::-webkit-details-marker { display: none; }
 .featured-copy .h-xl { font-size: clamp(40px, min(6.4vw, 10vh), 92px); }
 .featured-copy .lede { font-size: clamp(16px,1.3vw,19px); line-height: 1.5; max-width: 46ch; }
 .featured-copy .actions { margin-top: 4px; }
+.featured-copy .actions { align-items: center; }
+.seats { font-size: 15px; font-weight: 700; color: var(--yellow); white-space: nowrap; }
 
 /* Audience panels */
 .panels { padding: 0 var(--gutter) var(--section-y); display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); gap: 14px; }
