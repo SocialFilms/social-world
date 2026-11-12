@@ -80,6 +80,8 @@ summary::-webkit-details-marker { display: none; }
 .btn--md .tri { border-top-width: 7px; border-bottom-width: 7px; border-left-width: 12px; }
 .btn--sm .tri { border-top-width: 6px; border-bottom-width: 6px; border-left-width: 10px; }
 .info { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border: 2px solid var(--ink); border-radius: 50%; font-size: 12px; font-weight: 800; }
+.icon-hands { width: 24px; height: 24px; flex: none; }
+.btn--sm .icon-hands, .btn--md .icon-hands { width: 20px; height: 20px; }
 
 /* Billboard */
 .billboard { position: relative; min-height: min(100vh,900px); display: grid; grid-template-rows: auto 1fr; background: #000; overflow: hidden; }
