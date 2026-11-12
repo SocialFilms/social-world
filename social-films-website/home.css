@@ -508,3 +508,23 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 .perks[open] summary .pm { transform: rotate(45deg); }
 .perks .ticks { width: auto; box-sizing: border-box; padding: 0 20px 8px; }
 .perks .ticks li:last-child { padding-bottom: 14px; }
+
+/* ── Home: "One trip, a whole campaign" accordion ── */
+.deliv-list { padding: 0 var(--gutter); display: grid; gap: 8px; }
+.deliv-list details { background: var(--tile); border-radius: 10px; transition: background .2s ease; }
+.deliv-list details[open] { background: linear-gradient(160deg,#3A3A3A 0%,#222 100%); }
+.deliv-list summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 36px minmax(0,1fr) auto 24px; align-items: center; gap: 6px 20px; padding: 20px 24px; border-radius: 10px; }
+.deliv-list summary::-webkit-details-marker { display: none; }
+.deliv-list summary:hover { background: #3A3A3A; }
+.deliv-num { font-weight: 800; font-size: 20px; letter-spacing: -.02em; color: var(--yellow); }
+.deliv-title { font-weight: 700; font-size: clamp(18px, 1.7vw, 24px); letter-spacing: -.02em; color: var(--ink); }
+.deliv-tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--muted); white-space: nowrap; }
+.deliv-list .pm { font-size: 26px; font-weight: 300; line-height: 1; color: var(--muted); transition: transform .2s ease; justify-self: end; }
+.deliv-list details[open] .pm { transform: rotate(45deg); color: var(--yellow); }
+.deliv-list details > p { padding: 0 24px 22px calc(24px + 36px + 20px); font-size: 16px; line-height: 1.5; color: var(--muted); max-width: 60ch; }
+@media (max-width: 760px) {
+  .deliv-list summary { grid-template-columns: 28px minmax(0,1fr) 24px; padding: 16px 18px; gap: 4px 14px; }
+  .deliv-tag { grid-column: 2; grid-row: 2; white-space: normal; }
+  .deliv-list .pm { grid-column: 3; grid-row: 1; }
+  .deliv-list details > p { padding: 0 18px 18px calc(18px + 28px + 14px); font-size: 15px; }
+}
