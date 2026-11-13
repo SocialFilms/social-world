@@ -55,3 +55,14 @@
   from = "/brands.html"
   to = "/#brands"
   status = 301
+
+# The About page was removed: send old links to the home page.
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/"
+  status = 301
