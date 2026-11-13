@@ -31,3 +31,27 @@
   to = "https://socialfilms.world/"
   status = 301
   force = true
+
+# The separate Non-profits page was removed: send old links to the
+# Community Orgs section on the home page.
+[[redirects]]
+  from = "/nonprofits"
+  to = "/#nonprofits"
+  status = 301
+
+[[redirects]]
+  from = "/nonprofits.html"
+  to = "/#nonprofits"
+  status = 301
+
+# The separate Brands page was removed: send old links to the
+# Sponsors section on the home page.
+[[redirects]]
+  from = "/brands"
+  to = "/#brands"
+  status = 301
+
+[[redirects]]
+  from = "/brands.html"
+  to = "/#brands"
+  status = 301
