@@ -3,3 +3,31 @@
 # This is a plain static site: no build step.
 [build]
   publish = "social-films-website"
+
+# Old domain: send everything on socialfilms.ca (with or without www) to the new site.
+# Old Squarespace page addresses don't exist here, so they all land on the home page.
+# These only take effect once socialfilms.ca is added to this Netlify project as a
+# domain alias and its DNS points to Netlify.
+[[redirects]]
+  from = "https://socialfilms.ca/*"
+  to = "https://socialfilms.world/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://socialfilms.ca/*"
+  to = "https://socialfilms.world/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.socialfilms.ca/*"
+  to = "https://socialfilms.world/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.socialfilms.ca/*"
+  to = "https://socialfilms.world/"
+  status = 301
+  force = true
