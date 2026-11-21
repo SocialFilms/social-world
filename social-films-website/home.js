@@ -6,10 +6,14 @@
   var frame = dialog.querySelector('.player-frame');
   var lastTrigger = null;
 
-  function open(id, title, trigger) {
+  // Vimeo films use data-vimeo="ID"; YouTube films use data-youtube="ID".
+  // YouTube plays from youtube-nocookie.com with related videos from other channels and annotations turned off.
+  function open(id, title, trigger, source) {
     lastTrigger = trigger;
     var iframe = document.createElement('iframe');
-    iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+    iframe.src = source === 'youtube'
+      ? 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1&iv_load_policy=3&color=white'
+      : 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture';
     iframe.setAttribute('allowfullscreen', '');
     iframe.title = title || 'Video';
@@ -25,11 +29,12 @@
   dialog.querySelector('.player-close').addEventListener('click', close);
   dialog.addEventListener('click', function (e) { if (e.target === dialog) close(); });
 
-  document.querySelectorAll('button[data-vimeo]').forEach(function (btn) {
+  document.querySelectorAll('button[data-vimeo], button[data-youtube]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var id = btn.getAttribute('data-vimeo');
-      if (!id) return; // brand video placeholder: nothing to play yet
-      open(id, btn.getAttribute('data-title'), btn);
+      var yt = btn.getAttribute('data-youtube');
+      var id = yt || btn.getAttribute('data-vimeo');
+      if (!id) return; // placeholder: nothing to play yet
+      open(id, btn.getAttribute('data-title'), btn, yt ? 'youtube' : 'vimeo');
     });
   });
 })();
@@ -55,7 +60,7 @@
       if (copy.matches('a, button')) copy.tabIndex = -1;
       copy.querySelectorAll('a, button').forEach(function (f) { f.tabIndex = -1; });
       // a copied film still plays its film: pass the click on to the original
-      if (el.matches('button[data-vimeo]')) copy.addEventListener('click', function () { el.click(); });
+      if (el.matches('button[data-vimeo], button[data-youtube]')) copy.addEventListener('click', function () { el.click(); });
       rail.appendChild(copy);
     });
   }
