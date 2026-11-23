@@ -25,10 +25,41 @@
     });
   });
 
-  // ── Work page: clicking a film opens a preview window that plays it straight away ──
-  var pv = document.getElementById('preview');
-  if (pv) {
-    var films = Array.prototype.slice.call(document.querySelectorAll('.shelf-row .tile[data-youtube]'));
+  // ── Film preview window (Work and Studio pages): opens on click and plays straight away ──
+  // One list of films for every page. To add a film, add it here and as a tile in work.html.
+  var FILMS = [
+    { id: '1qZLS0R7xnE', title: 'Amal', tag: 'NON-PROFIT', meta: 'Mission film · Marrakech, Morocco',
+      desc: 'A mission film for Amal, a non-profit in Marrakech, Morocco.',
+      img: 'https://i.ytimg.com/vi/1qZLS0R7xnE/maxresdefault.jpg' },
+    { id: 'lx7WtMI8dM4', title: 'Relais & Châteaux', tag: 'HOSPITALITY', meta: 'Relais & Châteaux × non-profit Pack for a Purpose · Galápagos, Ecuador',
+      desc: 'Hospitality meets purpose: Relais & Châteaux and the non-profit Pack for a Purpose, filmed together in the Galápagos, Ecuador.',
+      img: 'https://i.ytimg.com/vi/lx7WtMI8dM4/maxresdefault.jpg' },
+    { id: 'adBSNQKS7Aw', title: 'Choices for Youth', tag: 'DOCU-SERIES', meta: 'Canadian Medical Association · St. John’s, Newfoundland',
+      desc: 'A docu-series with the Canadian Medical Association, filmed in St. John’s, Newfoundland.',
+      img: 'assets/home/choices-for-youth.webp' },
+    { id: '3RZTWwOD4mw', title: 'Selina', tag: 'DESTINATION', meta: 'Selina × Amal · Post-earthquake tourism film · Morocco',
+      desc: 'Selina × Amal: a post-earthquake tourism film from Morocco.',
+      img: 'assets/home/selina.webp' }
+  ];
+  var filmById = function (id) { return FILMS.filter(function (f) { return f.id === id; })[0]; };
+  var triggers = document.querySelectorAll('[data-film]');
+  if (triggers.length) {
+    var pv = document.createElement('div');
+    pv.className = 'pv'; pv.id = 'preview'; pv.hidden = true;
+    pv.innerHTML =
+      '<div class="pv-backdrop" data-close></div>' +
+      '<div class="pv-panel" role="dialog" aria-modal="true" aria-labelledby="pv-title">' +
+        '<button class="pv-close" type="button" data-close aria-label="Close preview">×</button>' +
+        '<div class="pv-top"><div class="pv-info">' +
+          '<div class="showcase-kicker"><span class="showcase-mark" aria-hidden="true">SF</span><span>Social Films</span></div>' +
+          '<h2 id="pv-title" class="pv-title"></h2>' +
+          '<div class="showcase-meta"><span class="showcase-tag pv-tag"></span><span class="pv-where"></span></div>' +
+          '<p class="pv-desc"></p>' +
+          '<a class="btn btn-light pv-book" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a>' +
+        '</div><div class="pv-video"></div></div>' +
+        '<div class="pv-more"><h3 class="pv-more-title">More like this</h3><div class="pv-more-row"></div></div>' +
+      '</div>';
+    document.body.appendChild(pv);
     var pvVideo = pv.querySelector('.pv-video');
     var pvMore = pv.querySelector('.pv-more-row');
     var lastFocus = null;
@@ -36,35 +67,35 @@
       pvVideo.innerHTML = '';
       pv.hidden = true;
       document.documentElement.classList.remove('pv-open');
+      if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
       if (lastFocus) lastFocus.focus();
     };
     var openPreview = function (film) {
+      if (!film) return;
       if (pv.hidden) lastFocus = document.activeElement;
-      pv.querySelector('.pv-title').textContent = film.getAttribute('data-title');
-      pv.querySelector('.pv-tag').textContent = film.getAttribute('data-tag');
-      pv.querySelector('.pv-where').textContent = film.getAttribute('data-meta');
-      pv.querySelector('.pv-desc').textContent = film.getAttribute('data-desc');
+      pv.querySelector('.pv-title').textContent = film.title;
+      pv.querySelector('.pv-tag').textContent = film.tag;
+      pv.querySelector('.pv-where').textContent = film.meta;
+      pv.querySelector('.pv-desc').textContent = film.desc;
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + film.getAttribute('data-youtube') + '?autoplay=1&rel=0&playsinline=1&iv_load_policy=3&color=white';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + film.id + '?autoplay=1&rel=0&playsinline=1&iv_load_policy=3&color=white';
       f.allow = 'autoplay; fullscreen; picture-in-picture';
       f.setAttribute('allowfullscreen', '');
-      f.title = film.getAttribute('data-title');
+      f.title = film.title;
       pvVideo.innerHTML = '';
       pvVideo.appendChild(f);
       // "More like this": every other film, each opening its own preview
       pvMore.innerHTML = '';
-      films.forEach(function (other) {
+      FILMS.forEach(function (other) {
         if (other === film) return;
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'pv-card';
-        var img = other.querySelector('img');
         b.innerHTML = '<img alt="" loading="lazy"><span class="tile-shade" aria-hidden="true"></span><span class="tile-copy"><span class="tile-tag"></span><span class="tile-title"></span></span>';
-        b.querySelector('img').src = img.src;
-        b.querySelector('img').style.objectPosition = img.style.objectPosition;
-        b.querySelector('.tile-tag').textContent = other.getAttribute('data-tag');
-        b.querySelector('.tile-title').textContent = other.getAttribute('data-title');
-        b.setAttribute('aria-label', 'Preview ' + other.getAttribute('data-title'));
+        b.querySelector('img').src = other.img;
+        b.querySelector('.tile-tag').textContent = other.tag;
+        b.querySelector('.tile-title').textContent = other.title;
+        b.setAttribute('aria-label', 'Preview ' + other.title);
         b.addEventListener('click', function () { openPreview(other); });
         pvMore.appendChild(b);
       });
@@ -73,15 +104,18 @@
       pv.querySelector('.pv-panel').scrollTop = 0;
       pv.querySelector('.pv-close').focus();
     };
-    films.forEach(function (film) { film.addEventListener('click', function () { openPreview(film); }); });
-    var featuredPlay = document.querySelector('.showcase-play');
-    var featuredId = document.querySelector('.showcase') && document.querySelector('.showcase').getAttribute('data-youtube');
-    if (featuredPlay) featuredPlay.addEventListener('click', function () {
-      var match = films.filter(function (f) { return f.getAttribute('data-youtube') === featuredId; })[0];
-      if (match) openPreview(match);
+    triggers.forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();                       // stay on this page
+        openPreview(filmById(el.getAttribute('data-film')));
+      });
     });
     pv.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closePreview); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pv.hidden) closePreview(); });
+    // A link with a film in the address (e.g. work.html#lx7WtMI8dM4) opens that film's preview
+    var openFromAddress = function () { openPreview(filmById(location.hash.slice(1))); };
+    openFromAddress();
+    window.addEventListener('hashchange', openFromAddress);
   }
 
   // ── Work page film row: on phones it scrolls by itself, like the home page row ──

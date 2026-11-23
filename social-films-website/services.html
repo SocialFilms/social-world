@@ -5,21 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="any">
-<title>Services — Social Films</title>
-<meta name="description" content="End-to-end video support, from strategic content planning to collaborative editing — documentaries, talking heads, creative direction, social content and more.">
+<title>Studio for non-profits — Social Films</title>
+<meta name="description" content="Social Films Studio for foundations, non-profits and community organizations: documentaries, mission films, awareness content and training.">
 <meta name="theme-color" content="#141414">
 <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=20">
+<link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
 
-<a class="skip-link" href="#services">Skip to services</a>
+<a class="skip-link" href="#services">Skip to content</a>
 
 <nav class="nav" aria-label="Primary">
   <a class="brand" href="index.html">SOCIAL FILMS</a>
   <div class="nav-links" id="site-menu">
     <a href="work.html">Work</a>
-    <a href="services.html" aria-current="page">Services</a>
+    <div class="nav-drop is-active"><a class="nav-studio" href="studio.html" aria-haspopup="true">Studio<svg class="caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="nav-drop-menu"><a href="studio.html">For businesses</a><a href="services.html" aria-current="page">For non-profits</a></div></div>
     <a href="index.html#who">Who we serve</a><a href="index.html#how">How it works</a>
     <a class="menu-book" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a><div class="menu-social" aria-label="Social media"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/social-films-world/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div>
   </div>
@@ -30,9 +30,13 @@
 
 <header class="hero">
   <div class="hero-glow" aria-hidden="true"></div>
-  <div class="eyebrow">Services</div>
+  <div class="eyebrow">Studio · Non-profits</div>
   <h1>Everything between<br>idea and <span class="accent">impact.</span></h1>
-  <p class="tight">End-to-end video production for brands, companies, foundations and community organizations, from strategic content planning to collaborative editing.</p>
+  <p class="tight">Video production for foundations, non-profits and community organizations, from your first story to a full awareness campaign.</p>
+  <div class="studio-actions">
+    <a class="btn btn-gold" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a>
+    <a class="btn btn-outline" href="work.html">See our work</a>
+  </div>
 </header>
 
 <main id="services">
@@ -45,33 +49,64 @@
         <h2>Social Films</h2>
         <div class="flagship-sub">Documentaries &amp; docu-series</div>
         <p>Every film carries the prestige of a national broadcast. We provide end-to-end support, from strategic content planning and interviewing diverse voices to collaborative editing. Whether it's a multi-part series or a singular brand story, we transform complex visions into human-centric narratives.</p>
-        <a href="work.html">See docu-series work ›</a>
       </div>
     </div>
   </section>
 
   <!-- Service cards -->
-  <section class="section--pad" style="padding-top:20px;padding-bottom:96px;">
+  <section class="section--pad" style="padding-top:20px;padding-bottom:24px;">
     <div class="wrap svc-grid">
-      <div class="svc svc--amber span-3">
-        <div class="num">02</div><div class="h">Talking Head Videos</div>
-        <p class="d">We elevate the interview format to help small businesses, nonprofits, founders, and organizations own their narrative. By stripping away production noise, we focus on the authentic stories that build trust and bridge the gap with your audience.</p>
+      <div class="svc span-3">
+        <div class="num">02</div><div class="h">The mission film</div>
+        <p class="d">A dedicated film your organization keeps, built to grow awareness and power your fundraising: for donors, grant applications, events and your website.</p>
       </div>
-      <div class="svc svc--green span-3">
-        <div class="num">03</div><div class="h">Creative Direction</div>
-        <p class="d">For those with in-house teams who want to elevate their output. We provide in-depth training and consultation services on video storytelling, like fleshing out narrative content plans, capturing professional narratives, and seamlessly editing everything together.</p>
+      <div class="svc span-3">
+        <div class="num">03</div><div class="h">Voices of your community</div>
+        <p class="d">The people you serve and the people doing the work, on camera, in their own words. Authentic interviews that help your organization own its narrative and build trust.</p>
       </div>
-      <div class="svc svc--orange span-2">
-        <div class="num">04</div><div class="h sm">Dynamic Social Content</div>
-        <p class="d">Whether it's targeted ads, organic shorts, or distilling long-form content into bite-sized content, we equip you with a premium toolkit of scroll-stopping social media assets.</p>
+      <div class="svc span-2">
+        <div class="num">04</div><div class="h sm">Awareness content</div>
+        <p class="d">Vertical cuts, reels and shorts that carry your mission into social feeds, events and campaigns.</p>
       </div>
-      <div class="svc svc--white span-2">
-        <div class="num">05</div><div class="h sm">Post-Production Support</div>
-        <p class="d">Already have the footage but need help finding the story? We step into the editing room to transform your raw content into a cohesive narrative. Beyond the cut, we provide professional finishing, including cinematic color grading, audio restoration, AI-driven animation, and platform optimization.</p>
+      <div class="svc span-2">
+        <div class="num">05</div><div class="h sm">Post-production support</div>
+        <p class="d">Already have footage from the field? We find the story and finish it, from editing to color, sound and platform-ready delivery.</p>
       </div>
-      <div class="svc svc--blue span-2">
-        <div class="num">06</div><div class="h sm">Content Batching</div>
-        <p class="d">We build comprehensive content banks that reflect the impact of your brand. By capturing a wide range of drone and camera content in one streamlined shoot, we provide a bank of assets that can be cut into ads, organic shorts, or internal series for months to come.</p>
+      <div class="svc span-2">
+        <div class="num">06</div><div class="h sm">Training for your team</div>
+        <p class="d">Training and consultation on video storytelling, so your in-house team can keep telling your story between shoots.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10% promise -->
+  <section class="section--pad" style="padding-top:20px;">
+    <div class="wrap flagship">
+      <div class="rail">OUR PROMISE</div>
+      <div>
+        <h2>10% of our profits go back to the communities we film</h2>
+        <div class="flagship-sub">Every project, every client</div>
+        <p>From every project, 10% of our profits fund the Social Films Initiative, our program for community-led documentaries. Your budget helps put the people driving change on screen.</p>
+        <a href="index.html#film">About the Social Films Initiative ›</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section--pad">
+    <div class="wrap">
+      <h2 class="studio-h">Created with non-profits</h2>
+      <div class="studio-work">
+        <a class="tile studio-tile" href="work.html#1qZLS0R7xnE" data-film="1qZLS0R7xnE">
+          <img src="https://i.ytimg.com/vi/1qZLS0R7xnE/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720" style="object-position:50% 50%">
+          <span class="tile-shade" aria-hidden="true"></span>
+          <span class="tile-copy"><span class="tile-tag">NON-PROFIT</span><span class="tile-title">Amal</span><span class="tile-sub">Mission film · Marrakech, Morocco</span></span>
+        </a>
+        <a class="tile studio-tile" href="work.html#adBSNQKS7Aw" data-film="adBSNQKS7Aw">
+          <img src="assets/home/choices-for-youth.webp" alt="" loading="lazy" width="1280" height="720" style="object-position:52% 50%">
+          <span class="tile-shade" aria-hidden="true"></span>
+          <span class="tile-copy"><span class="tile-tag">DOCU-SERIES</span><span class="tile-title">Choices for Youth</span><span class="tile-sub">Canadian Medical Association · Newfoundland</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -95,8 +130,9 @@
 
   <!-- CTA -->
   <section class="section--pad center">
-    <h2>Not sure which service fits?</h2>
-    <a class="btn btn-dark" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Schedule a call</a>
+    <h2>Not sure where to start?</h2>
+    <p class="studio-note">A funding partner can cover your film through the Social Film model. <a href="index.html#how">See how it works</a></p>
+    <a class="btn btn-gold" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a>
   </section>
 
 </main>
@@ -104,12 +140,12 @@
 <footer class="footer">
   <div class="footer-inner">
     <a class="brand" href="index.html">SOCIAL FILMS</a>
-    <nav aria-label="Site"><a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></nav>
+    <nav aria-label="Site"><a href="index.html">Home</a><a href="work.html">Work</a><a href="studio.html">For businesses</a><a href="services.html">For non-profits</a><a href="contact.html">Contact</a></nav>
     <nav aria-label="Social"><span class="social social--foot"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/social-films-world/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></span><a href="mailto:info@socialfilms.ca">info@socialfilms.ca</a></nav>
     <span>© 2026 Social Films · Montréal</span>
   </div>
 </footer>
 
-<script src="site.js?v=7"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>

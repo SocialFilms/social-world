@@ -189,3 +189,39 @@
     document.addEventListener("click", function (e) { if (bar.classList.contains("menu-open") && !bar.contains(e.target)) set(false); });
   });
 })();
+
+// ── Upcoming missions carousel: moves to the next mission every 20 seconds ──
+(function () {
+  var box = document.querySelector('.mission-carousel');
+  if (!box) return;
+  var track = box.querySelector('.mc-track');
+  var slides = Array.prototype.slice.call(track.children);
+  if (slides.length < 2) return;
+  var i = 0, timer = null, held = false;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(' + (-100 * i) + '%)';
+    slides.forEach(function (s, k) {
+      var on = k === i;
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      s.querySelectorAll('a, button').forEach(function (el) { el.tabIndex = on ? 0 : -1; });
+    });
+  }
+  function restart() { clearInterval(timer); timer = setInterval(function () { if (!held && !document.hidden) show(i + 1); }, 20000); }
+  box.querySelector('.mc-prev').addEventListener('click', function () { show(i - 1); restart(); });
+  box.querySelector('.mc-next').addEventListener('click', function () { show(i + 1); restart(); });
+  box.addEventListener('mouseenter', function () { held = true; });
+  box.addEventListener('mouseleave', function () { held = false; });
+  box.addEventListener('focusin', function () { held = true; });
+  box.addEventListener('focusout', function () { held = false; });
+  // swipe on phones
+  var x0 = null;
+  box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) { show(dx < 0 ? i + 1 : i - 1); restart(); }
+  }, { passive: true });
+  show(0);
+  restart();
+})();
