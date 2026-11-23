@@ -25,48 +25,63 @@
     });
   });
 
-  // ── Work page showcase: pick a film from the row, play it in the big banner ──
-  var show = document.querySelector('.showcase');
-  if (show) {
-    var bg = show.querySelector('.showcase-bg');
-    var player = show.querySelector('.showcase-player');
-    var closeBtn = show.querySelector('.showcase-close');
-    var tiles = document.querySelectorAll('.tile[data-youtube]');
-    var stopFilm = function () {
-      var f = player.querySelector('iframe'); if (f) f.remove();
-      player.hidden = true;
+  // ── Work page: clicking a film opens a preview window that plays it straight away ──
+  var pv = document.getElementById('preview');
+  if (pv) {
+    var films = Array.prototype.slice.call(document.querySelectorAll('.shelf-row .tile[data-youtube]'));
+    var pvVideo = pv.querySelector('.pv-video');
+    var pvMore = pv.querySelector('.pv-more-row');
+    var lastFocus = null;
+    var closePreview = function () {
+      pvVideo.innerHTML = '';
+      pv.hidden = true;
+      document.documentElement.classList.remove('pv-open');
+      if (lastFocus) lastFocus.focus();
     };
-    var playFilm = function () {
-      stopFilm();
+    var openPreview = function (film) {
+      if (pv.hidden) lastFocus = document.activeElement;
+      pv.querySelector('.pv-title').textContent = film.getAttribute('data-title');
+      pv.querySelector('.pv-tag').textContent = film.getAttribute('data-tag');
+      pv.querySelector('.pv-where').textContent = film.getAttribute('data-meta');
+      pv.querySelector('.pv-desc').textContent = film.getAttribute('data-desc');
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + show.getAttribute('data-youtube') + '?autoplay=1&rel=0&playsinline=1&iv_load_policy=3&color=white';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + film.getAttribute('data-youtube') + '?autoplay=1&rel=0&playsinline=1&iv_load_policy=3&color=white';
       f.allow = 'autoplay; fullscreen; picture-in-picture';
       f.setAttribute('allowfullscreen', '');
-      f.title = show.querySelector('.showcase-title').textContent;
-      player.appendChild(f);
-      player.hidden = false;
-    };
-    show.querySelector('.showcase-play').addEventListener('click', playFilm);
-    closeBtn.addEventListener('click', stopFilm);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !player.hidden) stopFilm(); });
-    tiles.forEach(function (tile) {
-      tile.addEventListener('click', function () {
-        stopFilm();
-        tiles.forEach(function (t) { t.removeAttribute('aria-current'); });
-        tile.setAttribute('aria-current', 'true');
-        var id = tile.getAttribute('data-youtube');
-        show.setAttribute('data-youtube', id);
-        show.querySelector('.showcase-title').textContent = tile.getAttribute('data-title');
-        show.querySelector('.showcase-tag').textContent = tile.getAttribute('data-tag');
-        show.querySelector('.showcase-where').textContent = tile.getAttribute('data-meta');
-        show.querySelector('.showcase-desc').textContent = tile.getAttribute('data-desc');
-        bg.classList.add('is-swapping');
-        var next = new Image();
-        next.onload = function () { bg.src = next.src; bg.classList.remove('is-swapping'); };
-        next.src = tile.querySelector('img').src;
-        show.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      f.title = film.getAttribute('data-title');
+      pvVideo.innerHTML = '';
+      pvVideo.appendChild(f);
+      // "More like this": every other film, each opening its own preview
+      pvMore.innerHTML = '';
+      films.forEach(function (other) {
+        if (other === film) return;
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'pv-card';
+        var img = other.querySelector('img');
+        b.innerHTML = '<img alt="" loading="lazy"><span class="tile-shade" aria-hidden="true"></span><span class="tile-copy"><span class="tile-tag"></span><span class="tile-title"></span></span>';
+        b.querySelector('img').src = img.src;
+        b.querySelector('img').style.objectPosition = img.style.objectPosition;
+        b.querySelector('.tile-tag').textContent = other.getAttribute('data-tag');
+        b.querySelector('.tile-title').textContent = other.getAttribute('data-title');
+        b.setAttribute('aria-label', 'Preview ' + other.getAttribute('data-title'));
+        b.addEventListener('click', function () { openPreview(other); });
+        pvMore.appendChild(b);
       });
+      pv.hidden = false;
+      document.documentElement.classList.add('pv-open');
+      pv.querySelector('.pv-panel').scrollTop = 0;
+      pv.querySelector('.pv-close').focus();
+    };
+    films.forEach(function (film) { film.addEventListener('click', function () { openPreview(film); }); });
+    var featuredPlay = document.querySelector('.showcase-play');
+    var featuredId = document.querySelector('.showcase') && document.querySelector('.showcase').getAttribute('data-youtube');
+    if (featuredPlay) featuredPlay.addEventListener('click', function () {
+      var match = films.filter(function (f) { return f.getAttribute('data-youtube') === featuredId; })[0];
+      if (match) openPreview(match);
     });
+    pv.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closePreview); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pv.hidden) closePreview(); });
   }
 
   // ── Work page film row: on phones it scrolls by itself, like the home page row ──

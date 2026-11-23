@@ -434,3 +434,45 @@ html { accent-color: var(--yellow); caret-color: var(--yellow); }
 .shelf-row .tile-copy { left: 12px; right: 12px; bottom: 12px; }
 .shelf-row .tile-title { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.15; }
 @media (max-width: 760px) { .shelf-row .tile { flex: 0 0 42vw; } }
+
+/* ── Work page: film preview window (opens on click, plays straight away) ── */
+.pv-open, .pv-open body { overflow: hidden; }
+.pv { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: clamp(12px, 3vw, 40px); }
+.pv[hidden] { display: none; }
+.pv-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.78); }
+.pv-panel { position: relative; width: min(1180px, 100%); max-height: 100%; overflow-y: auto; background: var(--bg); border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.6); overscroll-behavior: contain; }
+.pv-close { position: absolute; top: 12px; right: 12px; z-index: 3; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(20,20,20,.8); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+.pv-close:hover { background: #333; }
+.pv-top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(20px, 3vw, 40px); padding: clamp(24px, 3vw, 40px); padding-right: clamp(56px, 5vw, 64px); }
+.pv-info { display: grid; gap: 12px; justify-items: start; }
+.pv-title { margin: 0; font-size: clamp(32px, 4vw, 56px); font-weight: 800; line-height: .95; letter-spacing: -.04em; text-wrap: balance; }
+.pv-desc { margin: 0; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.88); }
+.pv-video { aspect-ratio: 16 / 9; background: #000; border-radius: var(--radius-sm); overflow: hidden; }
+.pv-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pv-more { display: grid; gap: 12px; padding: 0 clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px); }
+.pv-more-title { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.pv-more-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pv-card { position: relative; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: var(--radius-sm); overflow: hidden; background: var(--tile); color: var(--ink); font: inherit; text-align: left; cursor: pointer; transition: transform .2s ease; }
+.pv-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pv-card:hover, .pv-card:focus-visible { transform: scale(1.03); }
+@media (max-width: 760px) {
+  .pv { padding: 0; }
+  .pv-panel { height: 100%; border-radius: 0; }
+  .pv-top { grid-template-columns: 1fr; padding: 56px 16px 20px; }
+  .pv-video { order: -1; }
+  .pv-more { padding: 0 16px 28px; }
+  .pv-more-row { grid-template-columns: 1fr 1fr; }
+  .pv-close { top: 8px; right: 8px; }
+}
+/* Preview window: bigger video, smaller "More like this" thumbnails */
+.pv-panel { width: min(1280px, 100%); }
+@media (min-width: 761px) { .pv-top { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+.pv-more-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pv-card .tile-title { font-size: 15px; }
+.pv-card .tile-copy { left: 10px; right: 10px; bottom: 8px; gap: 2px; }
+@media (max-width: 760px) { .pv-more-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .pv-card .tile-title { font-size: 12px; line-height: 1.15; } .pv-card .tile-tag { display: none; } .pv-card .tile-copy { left: 7px; right: 7px; bottom: 6px; } }
+/* Phone: "More like this" titles stay on one line, scaling with the screen */
+@media (max-width: 760px) {
+  .pv-card .tile-copy { left: 6px; right: 6px; }
+  .pv-card .tile-title { font-size: clamp(8.5px, 2.75vw, 14px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; letter-spacing: -.02em; }
+}

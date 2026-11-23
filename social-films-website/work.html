@@ -9,7 +9,7 @@
 <meta name="description" content="Documentary-style stories filmed across 25+ destinations, for brands, nonprofits and causes.">
 <meta name="theme-color" content="#141414">
 <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="styles.css?v=20">
 </head>
 <body>
 
@@ -43,37 +43,34 @@
         <a class="btn btn-outline" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener"><span aria-hidden="true">+</span>&nbsp;Book a call</a>
       </div>
     </div>
-    <div class="showcase-player" hidden>
-      <button class="showcase-close" type="button" aria-label="Close film">×</button>
-    </div>
   </section>
 
   <section class="shelf" aria-labelledby="shelf-h">
     <h2 id="shelf-h" class="shelf-title">Social Films</h2>
     <div class="shelf-row">
-      <button class="tile" type="button" data-youtube="1qZLS0R7xnE" data-title="Amal" data-tag="NON-PROFIT" data-meta="Mission film · Marrakech, Morocco" data-desc="A mission film for Amal, a non-profit in Marrakech, Morocco." aria-current="true">
+      <button class="tile" type="button" data-youtube="1qZLS0R7xnE" data-title="Amal" data-tag="NON-PROFIT" data-meta="Mission film · Marrakech, Morocco" data-desc="A mission film for Amal, a non-profit in Marrakech, Morocco.">
         <img src="https://i.ytimg.com/vi/1qZLS0R7xnE/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
         <span class="tile-shade" aria-hidden="true"></span>
         <span class="tile-copy"><span class="tile-tag">NON-PROFIT</span><span class="tile-title">Amal</span></span>
-        <span class="sr-only">Show Amal</span>
+        <span class="sr-only">Preview Amal</span>
       </button>
-      <button class="tile" type="button" data-youtube="lx7WtMI8dM4" data-title="Pack for a Purpose" data-tag="RELAIS &amp; CHÂTEAUX" data-meta="Relais &amp; Châteaux × Pack for a Purpose · Galápagos, Ecuador" data-desc="Relais &amp; Châteaux and Pack for a Purpose, filmed in the Galápagos, Ecuador.">
+      <button class="tile" type="button" data-youtube="lx7WtMI8dM4" data-title="Relais &amp; Châteaux" data-tag="HOSPITALITY" data-meta="Relais &amp; Châteaux × non-profit Pack for a Purpose · Galápagos, Ecuador" data-desc="Hospitality meets purpose: Relais &amp; Châteaux and the non-profit Pack for a Purpose, filmed together in the Galápagos, Ecuador.">
         <img src="https://i.ytimg.com/vi/lx7WtMI8dM4/maxresdefault.jpg" style="object-position:50% 50%" alt="" loading="lazy" width="1280" height="720">
         <span class="tile-shade" aria-hidden="true"></span>
-        <span class="tile-copy"><span class="tile-tag">RELAIS &amp; CHÂTEAUX</span><span class="tile-title">Pack for a Purpose</span></span>
-        <span class="sr-only">Show Pack for a Purpose</span>
+        <span class="tile-copy"><span class="tile-tag">HOSPITALITY</span><span class="tile-title">Relais &amp; Châteaux</span></span>
+        <span class="sr-only">Preview Relais &amp; Châteaux</span>
       </button>
       <button class="tile" type="button" data-youtube="adBSNQKS7Aw" data-title="Choices for Youth" data-tag="DOCU-SERIES" data-meta="Canadian Medical Association · St. John&rsquo;s, Newfoundland" data-desc="A docu-series with the Canadian Medical Association, filmed in St. John&rsquo;s, Newfoundland.">
         <img src="assets/home/choices-for-youth.webp" style="object-position:52% 50%" alt="" loading="lazy" width="1280" height="720">
         <span class="tile-shade" aria-hidden="true"></span>
         <span class="tile-copy"><span class="tile-tag">DOCU-SERIES</span><span class="tile-title">Choices for Youth</span></span>
-        <span class="sr-only">Show Choices for Youth</span>
+        <span class="sr-only">Preview Choices for Youth</span>
       </button>
       <button class="tile" type="button" data-youtube="3RZTWwOD4mw" data-title="Selina" data-tag="DESTINATION" data-meta="Selina × Amal · Post-earthquake tourism film · Morocco" data-desc="Selina × Amal: a post-earthquake tourism film from Morocco.">
         <img src="assets/home/selina.webp" style="object-position:40% 50%" alt="" loading="lazy" width="1280" height="720">
         <span class="tile-shade" aria-hidden="true"></span>
         <span class="tile-copy"><span class="tile-tag">DESTINATION</span><span class="tile-title">Selina</span></span>
-        <span class="sr-only">Show Selina</span>
+        <span class="sr-only">Preview Selina</span>
       </button>
     </div>
   </section>
@@ -86,6 +83,27 @@
     </div>
   </section>
 
+  <!-- Film preview window: opens when a film is clicked, plays it straight away -->
+  <div class="pv" id="preview" hidden>
+    <div class="pv-backdrop" data-close></div>
+    <div class="pv-panel" role="dialog" aria-modal="true" aria-labelledby="pv-title">
+      <button class="pv-close" type="button" data-close aria-label="Close preview">×</button>
+      <div class="pv-top">
+        <div class="pv-info">
+          <div class="showcase-kicker"><span class="showcase-mark" aria-hidden="true">SF</span><span>Social Films</span></div>
+          <h2 id="pv-title" class="pv-title"></h2>
+          <div class="showcase-meta"><span class="showcase-tag pv-tag"></span><span class="pv-where"></span></div>
+          <p class="pv-desc"></p>
+        </div>
+        <div class="pv-video"></div>
+      </div>
+      <div class="pv-more">
+        <h3 class="pv-more-title">More like this</h3>
+        <div class="pv-more-row"></div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer class="footer">
@@ -97,6 +115,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=6"></script>
+<script src="site.js?v=7"></script>
 </body>
 </html>
