@@ -627,3 +627,28 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 .promise-link { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
 .promise-link:hover { color: #fff; }
 #who { scroll-margin-top: 24px; }
+
+/* ── Home: "Our promise" as a flat, solid brand-yellow block (no gradient or glow) ── */
+.promise-inner { background: var(--yellow); box-shadow: none; color: #141414; }
+.promise-stat { color: #141414; }
+.promise-copy .kicker, .promise-copy .kicker--yellow { color: #141414; opacity: .7; }
+.promise-copy h2 { color: #141414; }
+.promise-copy p { color: rgba(20,20,20,.82); }
+.promise-link { color: #141414; font-weight: 700; text-decoration-thickness: 2px; }
+.promise-link:hover { color: #141414; opacity: .7; }
+/* "Our promise": label sits above the big 10%, so it reads "10% of our profits…" */
+.promise-stat { display: grid; gap: 10px; }
+.promise-stat .kicker { font-size: 12px; letter-spacing: .1em; line-height: 1.2; color: #141414; opacity: .7; }
+/* "Our promise" layout: label on top, 10% beside the heading, description full width underneath */
+.promise-inner { grid-template-columns: 1fr; gap: 14px; align-items: start; }
+.promise-kicker { color: #141414; opacity: .7; }
+.promise-head { margin: 0; display: flex; align-items: center; gap: clamp(16px, 2.5vw, 32px); color: #141414; }
+.promise-num { font-weight: 800; font-size: clamp(72px, 9vw, 128px); line-height: .85; letter-spacing: -.05em; }
+.promise-title { font-weight: 800; font-size: clamp(28px, 3.4vw, 48px); line-height: 1; letter-spacing: -.035em; max-width: 20ch; text-wrap: balance; }
+.promise-copy { gap: 10px; }
+.promise-copy p { max-width: 80ch; }
+@media (max-width: 760px) {
+  .promise-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+.deliverables .row-head { align-items: flex-end; }
+.deliv-cta { padding: 8px var(--gutter) 0; }
