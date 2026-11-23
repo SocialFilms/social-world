@@ -76,3 +76,22 @@
     });
   });
 })();
+
+/* Social Films — phones and tablets: open and close the menu (☰) */
+(function () {
+  "use strict";
+  document.querySelectorAll(".menu-toggle").forEach(function (btn) {
+    var bar = btn.closest(".topbar, .nav");
+    if (!bar) return;
+    function set(open) {
+      bar.classList.toggle("menu-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    btn.addEventListener("click", function (e) { e.stopPropagation(); set(!bar.classList.contains("menu-open")); });
+    // a link in the menu closes it (important for links to sections on the same page)
+    bar.querySelectorAll("#site-menu a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && bar.classList.contains("menu-open")) { set(false); btn.focus(); } });
+    document.addEventListener("click", function (e) { if (bar.classList.contains("menu-open") && !bar.contains(e.target)) set(false); });
+  });
+})();

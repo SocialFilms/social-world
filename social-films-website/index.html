@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#141414">
 <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://player.vimeo.com">
-<link rel="stylesheet" href="home.css?v=39">
+<link rel="stylesheet" href="home.css?v=45">
 </head>
 <body>
 
@@ -25,11 +25,13 @@
   <header class="topbar">
     <div class="topbar-left">
       <a class="wordmark" href="index.html">SOCIAL FILMS</a>
-      <nav class="topnav" aria-label="Primary">
-        <a href="work.html">Work</a><a href="services.html">Services</a><a href="index.html#brands">Sponsors</a><a href="index.html#nonprofits">Community Orgs</a>
+      <nav class="topnav" id="site-menu" aria-label="Primary">
+        <a href="work.html">Work</a><a href="services.html">Services</a><a href="index.html#brands">Sponsors</a><a href="index.html#nonprofits">Community Orgs</a><a class="menu-book" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a><div class="menu-social" aria-label="Social media"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/social-films-world/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div>
       </nav>
     </div>
+    <!-- Instagram, YouTube and LinkedIn icons from Lucide (lucide.dev), ISC licence --><nav class="social social--head" aria-label="Social media"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/social-films-world/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></nav>
     <a class="book" href="https://calendly.com/socialfilms-ca/30min" target="_blank" rel="noopener">Book a call</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
   </header>
   <div class="billboard-copy">
     <h1 class="hero-wordmark">SOCIAL FILMS</h1>
@@ -266,7 +268,7 @@
       <span>© 2026 Social Films</span>
       <div class="foot-pages">
         <nav aria-label="Site"><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></nav>
-        <nav aria-label="Social"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener">YouTube</a><a href="mailto:info@socialfilms.ca">info@socialfilms.ca</a></nav>
+        <nav aria-label="Social"><span class="social social--foot"><a href="https://www.instagram.com/socialfilms.world/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="https://www.youtube.com/@socialfilms-world" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/social-films-world/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></span><a href="mailto:info@socialfilms.ca">info@socialfilms.ca</a></nav>
       </div>
     </footer>
   </div>
@@ -276,7 +278,7 @@
   <button class="player-close" type="button" aria-label="Close video">×</button>
   <div class="player-frame"></div>
 </dialog>
-<script src="home.js?v=7"></script>
+<script src="home.js?v=8"></script>
 
 </body>
 </html>

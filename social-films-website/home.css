@@ -528,3 +528,39 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
   .deliv-list .pm { grid-column: 3; grid-row: 1; }
   .deliv-list details > p { padding: 0 18px 18px calc(18px + 28px + 14px); font-size: 15px; }
 }
+
+/* ── Social media icons (header and footer) ── */
+.social { display: inline-flex; align-items: center; gap: 2px; }
+.social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: var(--ink); transition: color .2s ease, background .2s ease; }
+.social a:hover { color: var(--yellow); background: rgba(255,255,255,.08); }
+.social svg { width: 20px; height: 20px; }
+.social--head { margin-left: auto; }
+.social--foot a { width: 32px; height: 32px; color: var(--muted); }
+.social--foot svg { width: 18px; height: 18px; }
+
+/* ── Phones and tablets: menu button (☰) with the nav links in a drop-down panel ── */
+.menu-toggle { display: none; flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--ink); cursor: pointer; position: relative; }
+.menu-toggle span { position: absolute; left: 10px; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+.menu-toggle span:nth-child(1) { top: 13px; } .menu-toggle span:nth-child(2) { top: 19px; } .menu-toggle span:nth-child(3) { top: 25px; }
+.menu-open .menu-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.menu-book { display: none; }
+.menu-social { display: none; }
+@media (max-width: 900px) {
+  /* bar shows only the logo and the menu button; links, Book a call and social icons live in the menu */
+  .topbar { flex-wrap: nowrap; height: 64px; padding-top: 0; padding-bottom: 0; row-gap: 0; gap: 8px; }
+  .topbar-left { display: flex; }
+  .topbar .social--head { display: none; }
+  .topbar .book { margin-left: auto; height: 36px; padding: 0 14px; }
+  .menu-toggle { display: inline-flex; }
+  .topnav { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 30; flex-direction: column; align-items: stretch; gap: 0; margin: 0; flex: none; order: 0; overflow: visible; padding: 4px var(--gutter) 20px; background: var(--bg); border-top: 1px solid var(--line); box-shadow: 0 18px 30px rgba(0,0,0,.4); font-size: 18px; font-weight: 600; }
+  .topbar.menu-open .topnav { display: flex; }
+  .topnav a { display: flex; align-items: center; min-height: 52px; border-bottom: 1px solid var(--line); }
+  .topnav a.menu-book { display: flex; align-items: center; justify-content: center; min-height: 50px; margin-top: 18px; border: 0; border-radius: 4px; background: var(--yellow); color: var(--bg); font-size: 16px; font-weight: 700; }
+  .topnav a.menu-book:hover { background: var(--yellow-hover); color: var(--bg); }
+  .topnav .menu-social { display: flex; justify-content: center; gap: 8px; padding-top: 16px; }
+  .topnav .menu-social a { display: inline-flex; justify-content: center; width: 48px; height: 48px; min-height: 0; border: 0; border-radius: 50%; color: var(--ink); }
+  .topnav .menu-social a:hover { color: var(--yellow); background: rgba(255,255,255,.08); }
+  .topnav .menu-social svg { width: 22px; height: 22px; }
+}
