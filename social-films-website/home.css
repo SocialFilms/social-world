@@ -615,3 +615,14 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 .duo-body .perks { width: 100%; }
 .duo-body .perks .ticks { width: auto; box-sizing: border-box; }
 @media (max-width: 860px) { .duo { grid-template-columns: 1fr; } }
+
+/* ── Home: "Social Films" row gets a full section title and breathing room below "Our promise" ── */
+.stories { padding-top: var(--section-y); gap: 20px; }
+.stories .row-intro { gap: 12px; }
+.deliverables { gap: 20px; }
+
+/* ── Home: Social Films Initiative intro above the missions, and its link from "Our promise" ── */
+.missions { gap: 20px; scroll-margin-top: 24px; }
+.missions .row-intro { gap: 12px; }
+.promise-link { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
+.promise-link:hover { color: #fff; }
