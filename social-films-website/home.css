@@ -626,3 +626,4 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
 .missions .row-intro { gap: 12px; }
 .promise-link { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
 .promise-link:hover { color: #fff; }
+#who { scroll-margin-top: 24px; }
