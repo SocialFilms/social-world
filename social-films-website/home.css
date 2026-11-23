@@ -564,3 +564,54 @@ button.btn { border: 0; font-family: inherit; cursor: pointer; }
   .topnav .menu-social a:hover { color: var(--yellow); background: rgba(255,255,255,.08); }
   .topnav .menu-social svg { width: 22px; height: 22px; }
 }
+
+/* ── Home: "Three ways we work with you" ── */
+.paths { padding: var(--section-y) var(--gutter) 0; display: grid; gap: 28px; }
+.paths-head { display: grid; gap: 10px; }
+.paths-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.path { display: grid; gap: 10px; align-content: start; padding: 28px 24px; border-radius: 16px; background: var(--card-grad); color: var(--ink); text-decoration: none; box-shadow: inset 0 0 0 1px var(--line); transition: transform .25s ease, box-shadow .25s ease; }
+.path:hover { color: var(--ink); transform: translateY(-3px); box-shadow: inset 0 0 0 1px var(--yellow); }
+.path .kicker { font-size: 11px; }
+.path-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px); line-height: 1.1; letter-spacing: -.025em; }
+.path p { font-size: 15px; line-height: 1.5; color: var(--muted); }
+.path-cta { margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--yellow); }
+@media (max-width: 860px) { .paths-grid { grid-template-columns: 1fr; } }
+
+/* ── Home: "Not every story is a documentary" (production services) ── */
+.production { padding: 0 var(--gutter) var(--section-y); }
+.production-inner { display: grid; grid-template-columns: minmax(0,7fr) minmax(0,5fr); gap: clamp(28px,4vw,64px); align-items: center; padding: clamp(28px,4vw,48px); border-radius: 16px; background: var(--card-grad); box-shadow: inset 0 0 0 1px var(--line); }
+.production-copy { display: grid; gap: 16px; justify-items: start; }
+.production-copy > p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: var(--muted); max-width: 52ch; }
+.production-copy .actions { margin-top: 4px; }
+.production-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; font-size: 16px; font-weight: 600; }
+.production-list li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.production-list li:last-child { border-bottom: 1px solid var(--line); }
+.production-list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); flex: none; }
+@media (max-width: 860px) { .production-inner { grid-template-columns: 1fr; } }
+
+/* ── Home: "Our promise" (profit-sharing pledge) ── */
+.promise { padding: 14px var(--gutter) 0; }
+.promise-inner { display: grid; grid-template-columns: auto minmax(0,1fr); gap: clamp(24px,4vw,56px); align-items: center; padding: clamp(28px,4vw,48px); border-radius: 16px; background: linear-gradient(160deg,#3A3000 0%,#1A1600 100%); box-shadow: inset 0 0 0 1px rgba(255,214,10,.25); }
+.promise-stat { font-weight: 800; font-size: clamp(72px, 10vw, 140px); line-height: .9; letter-spacing: -.05em; color: var(--yellow); }
+.promise-copy { display: grid; gap: 12px; }
+.promise-copy h2 { max-width: 22ch; text-wrap: balance; }
+.promise-copy p { font-size: clamp(16px,1.2vw,19px); line-height: 1.5; color: #E6E0C8; max-width: 56ch; }
+@media (max-width: 760px) { .promise-inner { grid-template-columns: 1fr; gap: 8px; } }
+
+/* ── Home: films row intro line (was "The Social Film" section) ── */
+.row-intro { display: grid; gap: 6px; }
+.row-sub { font-size: clamp(15px,1.1vw,17px); line-height: 1.5; color: var(--muted); max-width: 62ch; }
+.stories .row-head { align-items: flex-end; }
+
+/* ── Home: "How it works" — funders and community organizations side by side, one shared process ── */
+.how-it-works { gap: 32px; scroll-margin-top: 24px; }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; align-items: start; }
+.duo-card { border-radius: 16px; overflow: hidden; background: var(--card-grad); box-shadow: inset 0 0 0 1px var(--line); scroll-margin-top: 24px; }
+.duo-media { aspect-ratio: 16 / 7; overflow: hidden; background: var(--tile); }
+.duo-media img { width: 100%; height: 100%; object-fit: cover; }
+.duo-body { display: grid; gap: 14px; justify-items: start; padding: clamp(22px,2.5vw,32px); }
+.duo-title { font-weight: 800; font-size: clamp(24px,2.4vw,34px); line-height: 1.05; letter-spacing: -.03em; text-wrap: balance; }
+.duo-body > p { font-size: 16px; line-height: 1.5; color: var(--muted); }
+.duo-body .perks { width: 100%; }
+.duo-body .perks .ticks { width: auto; box-sizing: border-box; }
+@media (max-width: 860px) { .duo { grid-template-columns: 1fr; } }
