@@ -546,3 +546,140 @@ html { accent-color: var(--yellow); caret-color: var(--yellow); }
 .flagship--promise { padding: clamp(24px, 3.4vw, 40px) clamp(24px, 4vw, 52px); gap: 36px; }
 .pc-head h2 { text-wrap: balance; }
 .pc-num { display: block; font-size: 2.1em; font-weight: 900; line-height: .85; letter-spacing: -.05em; margin-bottom: 6px; }
+
+/* ── "How the model works" diagram: paid work → the Initiative → grassroots impact ── */
+.flow { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: stretch; gap: 10px; margin: 28px 0; }
+.flow-step { display: grid; gap: 8px; align-content: start; padding: 24px 22px; border-radius: 16px; background: linear-gradient(150deg,#2A2A2A 0%,#171717 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.flow-step p { margin: 0; font-size: 15px; line-height: 1.5; color: #B3B3B3; }
+.flow-k { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #FFD60A; }
+.flow-t { font-size: clamp(19px, 1.6vw, 23px); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; color: #fff; }
+.flow-step--yellow { background: linear-gradient(150deg,#FFE066 0%,#FFD60A 100%); box-shadow: none; }
+.flow-step--yellow .flow-k { color: rgba(20,20,20,.65); }
+.flow-step--yellow .flow-t { color: #141414; }
+.flow-step--yellow p { color: rgba(20,20,20,.8); }
+.flow-arrow { display: grid; place-items: center; position: relative; width: 72px; }
+.flow-arrow::before { content: ""; position: absolute; left: 6px; right: 6px; top: 50%; height: 2px; background: #FFD60A; }
+.flow-arrow::after { content: ""; position: absolute; right: 4px; top: calc(50% - 5px); border: 6px solid transparent; border-left: 9px solid #FFD60A; border-right: 0; }
+.flow-arrow span { position: relative; top: -16px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #B3B3B3; white-space: nowrap; }
+@media (max-width: 900px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow-arrow { width: auto; height: 44px; }
+  .flow-arrow::before { left: 50%; right: auto; top: 4px; bottom: 6px; width: 2px; height: auto; }
+  .flow-arrow::after { left: calc(50% - 6px); right: auto; top: auto; bottom: 0; border: 6px solid transparent; border-top: 9px solid #FFD60A; border-bottom: 0; }
+  .flow-arrow span { top: 0; left: 64px; position: absolute; }
+}
+
+/* ── 2026 revamp: Services pillars, Initiative, About, Contact ── */
+.kicker { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.btn-ink { background: #141414; color: #fff; }
+.btn-ink:hover { background: #2A2A2A; color: #fff; }
+.ph { border-bottom: 2px dashed var(--yellow); }
+.intro-p { margin: 0 0 8px; max-width: 70ch; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.55; color: var(--muted); }
+
+.pillar + .pillar { padding-top: 0; }
+.pillar-head { display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 3vw, 40px); align-items: start; margin-bottom: 24px; }
+.pillar-num { font-weight: 800; font-size: clamp(56px, 7vw, 104px); line-height: .8; letter-spacing: -.05em; color: var(--yellow); }
+.pillar-title { margin: 8px 0 10px; font-size: clamp(30px, 3.6vw, 52px); font-weight: 800; line-height: 1; letter-spacing: -.035em; max-width: 20ch; }
+.pillar-tag { margin: 0 0 8px; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.4; color: var(--ink); }
+.pillar-for { margin: 0; font-size: 14px; color: var(--muted); }
+.pillar-for strong { color: var(--ink); }
+.offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.offer { padding: 26px 24px; border-radius: var(--radius); background: var(--card-grad); }
+.offer-t { margin-bottom: 8px; font-size: clamp(19px, 1.6vw, 23px); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+.offer p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+.pathways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.pathways li { padding: 24px 22px; border-radius: var(--radius); background: var(--card-grad); }
+.pathway-n { font-weight: 800; font-size: 36px; line-height: 1; color: var(--yellow); margin-bottom: 14px; }
+.pathway-t { margin-bottom: 8px; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+.pathways p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+.charter { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.charter-item { padding: 26px 24px; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.charter-t { margin-bottom: 8px; font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.charter-item p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+.duo-cta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.duo-box { display: grid; gap: 14px; justify-items: start; align-content: start; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius); background: var(--card-grad); }
+.duo-box h2 { margin: 0; font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+.duo-box p { margin: 0 0 6px; font-size: 16px; line-height: 1.55; color: var(--muted); }
+.duo-box--yellow { background: var(--yellow-grad); color: #141414; }
+.duo-box--yellow p { color: rgba(20,20,20,.8); }
+.eyebrow--dark { background: #141414; color: var(--yellow); }
+
+.story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.story-body p { margin: 0 0 18px; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.6; color: rgba(255,255,255,.88); }
+
+.missions-block { padding: 0 0 clamp(56px,7vw,104px); }
+.wrap-g { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); box-sizing: content-box; }
+
+.form select { width: 100%; background: var(--bg); border: 1px solid var(--edge); border-radius: 4px; padding: 14px 40px 14px 16px; color: var(--ink); font: 400 16px "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23B3B3B3' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+.form select:focus-visible { outline-color: var(--yellow); border-color: var(--yellow); }
+.field > span { text-transform: none; letter-spacing: 0; font-size: 13px; font-weight: 600; }
+
+@media (max-width: 860px) {
+  .offer-grid, .pathways, .charter, .duo-cta, .story { grid-template-columns: 1fr; }
+  .pillar-head { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-width: 640px) { .form-row { flex-direction: column; } }
+
+/* Missions carousel on the Initiative page (same behaviour as the old home page version) */
+.mission-carousel { position: relative; overflow: hidden; margin-top: 8px; }
+.mc-track { display: flex; transition: transform .8s cubic-bezier(.4,0,.2,1); }
+.mc-track > .mc-slide { flex: 0 0 100%; min-width: 0; }
+.mission { position: relative; display: grid; align-items: end; min-height: min(78vh, 680px); background: #000; overflow: hidden; }
+.mission > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.mission .shade-x { position: absolute; inset: 0; background: linear-gradient(90deg,rgba(20,20,20,.9) 0%,rgba(20,20,20,.55) 40%,rgba(20,20,20,0) 75%); }
+.mission .shade-y { position: absolute; inset: 0; background: linear-gradient(180deg,var(--bg) 0%,rgba(20,20,20,0) 18%,rgba(20,20,20,0) 55%,var(--bg) 100%); }
+.mission .featured-copy { position: relative; display: grid; gap: 16px; justify-items: start; max-width: 640px; padding: clamp(40px,6vw,80px) var(--gutter); }
+.mission .h-xl { margin: 0; font-size: clamp(26px, 3vw, 40px); font-weight: 800; line-height: 1; letter-spacing: -.035em; }
+.mission .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: -6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.mission .meta .dot { color: #555; }
+.mission .tag { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 3px; background: var(--yellow); color: var(--bg); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.mission .lede { margin: 0; font-size: clamp(16px,1.3vw,19px); line-height: 1.5; max-width: 46ch; color: rgba(255,255,255,.9); }
+.mission .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.mission .btn--md { height: 48px; padding: 0 22px; font-size: 16px; background: var(--ink); color: var(--bg); }
+.mission .tri { display: inline-block; width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 12px solid var(--bg); }
+.mission .seats { font-size: 15px; font-weight: 700; color: var(--yellow); white-space: nowrap; }
+.mc-arrow { position: absolute; top: 50%; z-index: 3; transform: translateY(-50%); display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); cursor: pointer; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.mc-arrow:hover, .mc-arrow:focus-visible { background: rgba(255,255,255,.28); color: #fff; }
+.mc-prev { left: 10px; } .mc-next { right: 10px; }
+@media (max-width: 760px) {
+  .mission { min-height: 0; }
+  .mc-arrow { top: 6px; transform: none; width: 34px; height: 34px; }
+  .mc-prev { left: auto; right: calc(var(--gutter) + 42px); }
+  .mc-next { right: var(--gutter); }
+  .mission .featured-copy { padding-top: 52px; }
+}
+@media (prefers-reduced-motion: reduce) { .mc-track { transition: none; } }
+
+/* Diagram arrows: label sits above the arrow inside its own column, never over the cards; stacks earlier */
+.flow { grid-template-columns: minmax(0,1fr) 112px minmax(0,1fr) 112px minmax(0,1fr); }
+.flow-arrow { width: auto; align-content: center; gap: 8px; }
+.flow-arrow span { position: static; top: auto; display: block; padding: 0 4px; text-align: center; white-space: normal; font-size: 10px; line-height: 1.2; transform: translateY(-14px); }
+@media (max-width: 1100px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow-arrow { height: 52px; }
+  .flow-arrow::before { left: 50%; right: auto; top: 4px; bottom: 6px; width: 2px; height: auto; }
+  .flow-arrow::after { left: calc(50% - 6px); right: auto; top: auto; bottom: 0; border: 6px solid transparent; border-top: 9px solid #FFD60A; border-bottom: 0; }
+  .flow-arrow span { position: absolute; left: calc(50% + 16px); top: 50%; transform: translateY(-50%); text-align: left; white-space: nowrap; }
+}
+
+/* Initiative: three funding sources come together into the Initiative */
+.pathways-join { position: relative; height: 56px; }
+.pathways-join::before { content: ""; position: absolute; left: 50%; top: 6px; bottom: 8px; border-left: 2px solid var(--yellow); }
+.pathways-join::after { content: ""; position: absolute; left: calc(50% - 6px); bottom: 0; border: 6px solid transparent; border-top: 9px solid var(--yellow); border-bottom: 0; }
+.pathways-result { display: grid; gap: 6px; justify-items: center; text-align: center; padding: 26px 24px; border-radius: var(--radius); background: var(--yellow-grad); color: #141414; }
+.pathways-result-k { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(20,20,20,.65); }
+.pathways-result-t { font-size: clamp(20px, 2vw, 28px); font-weight: 800; line-height: 1.15; letter-spacing: -.025em; max-width: 30ch; }
+.pathways { margin-top: 24px; }
+/* Services: Social Data feature inside pillar two */
+.social-data { display: grid; gap: 10px; margin-bottom: 14px; padding: clamp(26px, 3.4vw, 40px); border-radius: var(--radius); background: var(--yellow-grad); color: #141414; }
+.sd-k { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(20,20,20,.65); }
+.sd-t { font-size: clamp(24px, 2.6vw, 36px); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+.social-data p { margin: 0; max-width: 70ch; font-size: 16px; line-height: 1.55; color: rgba(20,20,20,.82); }
+/* Breathing room: eyebrow label above section titles, and the arrow between the funding cards and result box */
+.eyebrow + .studio-h { margin-top: 16px; }
+.pathways-join { margin: 14px 0; }

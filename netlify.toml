@@ -32,37 +32,33 @@
   status = 301
   force = true
 
-# The separate Non-profits page was removed: send old links to the
-# Community Orgs section on the home page.
+# Old pages and sections, sent to their new homes (2026 revamp).
 [[redirects]]
   from = "/nonprofits"
-  to = "/#nonprofits"
+  to = "/initiative"
   status = 301
 
 [[redirects]]
   from = "/nonprofits.html"
-  to = "/#nonprofits"
+  to = "/initiative"
   status = 301
 
-# The separate Brands page was removed: send old links to the
-# Sponsors section on the home page.
 [[redirects]]
   from = "/brands"
-  to = "/#brands"
+  to = "/services"
   status = 301
 
 [[redirects]]
   from = "/brands.html"
-  to = "/#brands"
-  status = 301
-
-# The About page was removed: send old links to the home page.
-[[redirects]]
-  from = "/about"
-  to = "/"
+  to = "/services"
   status = 301
 
 [[redirects]]
-  from = "/about.html"
-  to = "/"
+  from = "/studio"
+  to = "/services"
+  status = 301
+
+[[redirects]]
+  from = "/studio.html"
+  to = "/services"
   status = 301

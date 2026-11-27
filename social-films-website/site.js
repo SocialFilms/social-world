@@ -196,20 +196,34 @@
     });
   }
 
-  // ── Contact forms: no backend yet, so hand the message to the visitor's mail app ──
+  // ── Contact form: no backend yet, so hand the inquiry to the visitor's mail app ──
   document.querySelectorAll('form[data-demo]').forEach(function (form) {
+    // contact.html?topic=initiative (or sponsor, brand…) preselects the topic
+    var want = new URLSearchParams(location.search).get('topic');
+    if (want && form.elements.topic) {
+      var opt = form.elements.topic.querySelector('option[value="' + want + '"]');
+      if (opt) opt.selected = true;
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
       var v = function (n) { var f = form.elements[n]; return f ? f.value.trim() : ''; };
-      var name = [v('first'), v('last')].filter(Boolean).join(' ');
-      var body = v('message') + '\n\n— ' + name + (v('org') ? ', ' + v('org') : '') + '\n' + v('email');
-      var href = 'mailto:info@socialfilms.ca?subject=' + encodeURIComponent('Project enquiry from ' + name) +
-        '&body=' + encodeURIComponent(body);
+      var label = function (n) { var f = form.elements[n]; return f && f.selectedIndex > 0 ? f.options[f.selectedIndex].text : ''; };
+      var lines = [
+        v('message'), '',
+        '— ' + v('name') + (v('role') ? ', ' + v('role') : ''),
+        v('org') + (v('website') ? ' (' + v('website') + ')' : ''),
+        v('email'), '',
+        'Regarding: ' + (label('topic') || '—'),
+        'Timeline: ' + (label('timeline') || 'Not sure yet'),
+        'Budget: ' + (label('budget') || 'Not sure yet')
+      ];
+      var href = 'mailto:info@socialfilms.ca?subject=' + encodeURIComponent('Project inquiry from ' + v('name') + (v('org') ? ' (' + v('org') + ')' : '')) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
       window.location.href = href;
       var note = form.querySelector('.form-note');
       if (note) {
-        note.innerHTML = 'Your email app should open with the message ready to send. Nothing opened? Write to <a href="mailto:info@socialfilms.ca">info@socialfilms.ca</a>.';
+        note.innerHTML = 'Your email app should open with the inquiry ready to send. Nothing opened? Write to <a href="mailto:info@socialfilms.ca">info@socialfilms.ca</a>.';
         note.hidden = false;
       }
     });
@@ -233,4 +247,40 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && bar.classList.contains("menu-open")) { set(false); btn.focus(); } });
     document.addEventListener("click", function (e) { if (bar.classList.contains("menu-open") && !bar.contains(e.target)) set(false); });
   });
+})();
+
+// ── Upcoming missions carousel: moves to the next mission every 20 seconds ──
+(function () {
+  var box = document.querySelector('.mission-carousel');
+  if (!box) return;
+  var track = box.querySelector('.mc-track');
+  var slides = Array.prototype.slice.call(track.children);
+  if (slides.length < 2) return;
+  var i = 0, timer = null, held = false;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(' + (-100 * i) + '%)';
+    slides.forEach(function (s, k) {
+      var on = k === i;
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      s.querySelectorAll('a, button').forEach(function (el) { el.tabIndex = on ? 0 : -1; });
+    });
+  }
+  function restart() { clearInterval(timer); timer = setInterval(function () { if (!held && !document.hidden) show(i + 1); }, 20000); }
+  box.querySelector('.mc-prev').addEventListener('click', function () { show(i - 1); restart(); });
+  box.querySelector('.mc-next').addEventListener('click', function () { show(i + 1); restart(); });
+  box.addEventListener('mouseenter', function () { held = true; });
+  box.addEventListener('mouseleave', function () { held = false; });
+  box.addEventListener('focusin', function () { held = true; });
+  box.addEventListener('focusout', function () { held = false; });
+  // swipe on phones
+  var x0 = null;
+  box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) { show(dx < 0 ? i + 1 : i - 1); restart(); }
+  }, { passive: true });
+  show(0);
+  restart();
 })();
